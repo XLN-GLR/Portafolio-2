@@ -429,13 +429,13 @@ body {
     filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.75));
 }
 
-/* Hero G 3D Logo (Pure HTML/CSS Multicapa) */
+/* Hero G 3D Logo (Pure HTML/CSS Multicapa con SVG) */
 .hero-logo-box {
     margin-top: 15px;
     margin-bottom: 25px;
     display: flex;
     justify-content: flex-start;
-    height: 120px; /* Suficiente espacio para la extrusión */
+    height: 130px; /* Suficiente espacio para la extrusión */
     align-items: center;
 }
 
@@ -449,43 +449,50 @@ body {
     pointer-events: none; /* No hover effects */
 }
 
+.g-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
 .g-3d-layer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    font-size: 8rem; /* Tamaño proporcional en base a Orbitron */
-    line-height: 1;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateZ(var(--z));
+    transform: translate3d(0, 0, var(--z)); /* GPU forzada para 3D real estable */
+    will-change: transform; /* Avisa al navegador para optimización de renderizado en GPU */
+    transform-style: preserve-3d;
+    backface-visibility: hidden; /* Evita parpadeos en giros de 180° */
 }
 
-/* Cara frontal brillante */
-.g-3d-layer.face {
-    color: #4ade80;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-    -webkit-text-stroke: 1px #86efac;
+/* Cara frontal impecable, verde elegante, sin brillos excesivos */
+.g-3d-layer.face .g-svg path {
+    fill: #4ade80;
+    stroke: #22c55e;
+    stroke-width: 1.5px;
 }
 
-/* Extrusión del cuerpo (profundidad) */
-.g-3d-layer.depth {
-    color: #15803d; /* Tono verde sólido y vivo */
-    -webkit-text-stroke: 1.5px #14532d; /* Borde oscuro para fusionar las capas en una pared lateral uniforme */
+/* Extrusión del cuerpo lateral (fusión lateral perfecta) */
+.g-3d-layer.depth .g-svg path {
+    fill: #15803d; /* Color verde lateral sólido */
+    stroke: #15803d; /* Trazo del mismo color lateral */
+    stroke-width: 3.5px; /* Trazo grueso para fusionar las capas en una pared suave */
+    paint-order: stroke fill;
 }
 
-/* Sombra posterior */
-.g-3d-layer.shadow {
-    color: transparent;
-    -webkit-text-stroke: 0;
-    text-shadow: 0 15px 25px rgba(0, 0, 0, 0.85); /* Sombra física oscura realista, sin resplandores verdes */
-    filter: blur(5px);
-    opacity: 0.9;
+/* Sombra posterior física opaca sin brillos raros */
+.g-3d-layer.shadow .g-svg path {
+    fill: #000000;
+    stroke: #000000;
+    stroke-width: 2px;
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.95));
+    opacity: 0.95;
 }
 
 @keyframes rotate3d-custom {
@@ -559,8 +566,9 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 100px;
-    overflow: hidden;
+    padding-top: 120px;
+    padding-bottom: 120px; /* Suficiente espacio abajo para evitar solapamientos visuales */
+    overflow: clip; /* Permite ver el contenido pero protege el renderizado 3D de cortes */
     background-color: var(--bg-dark-deep);
 }
 
@@ -642,8 +650,8 @@ body {
 
 .hero-actions {
     display: flex;
-    gap: 20px;
-    margin-top: 25px;
+    gap: 24px; /* Mayor separación entre botones */
+    margin-top: 35px; /* Mayor espacio con respecto a la terminal */
     flex-wrap: wrap;
 }
 
@@ -1110,7 +1118,7 @@ body {
 
 /* 9.1 CERTIFICACIONES & EDUCACIÓN */
 .certifications-section {
-    margin-top: 80px;
+    margin-top: 120px; /* Incrementado de 80px a 120px para una separación holgada y premium */
 }
 
 .subsection-title {
@@ -1604,8 +1612,10 @@ body {
 
 .form-group textarea {
     resize: none;
-    max-height: 150px;
-    overflow-y: auto;
+    height: 120px; /* Tamaño estable y fijo */
+    min-height: 120px;
+    max-height: 120px;
+    overflow-y: auto; /* Scroll vertical nativo y controlado */
 }
 
 .form-group input::placeholder, .form-group textarea::placeholder {
