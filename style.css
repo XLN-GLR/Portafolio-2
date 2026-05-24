@@ -84,7 +84,7 @@ body {
     height: 100vh;
     z-index: -2; /* Detrás del fondo del body */
     pointer-events: none; /* No interactúa con clics de mouse */
-    opacity: 0.15; /* Sutil y elegante, no interfiere con la lectura */
+    opacity: 0.32; /* Incrementada para excelente visibilidad hacker sin comprometer legibilidad */
     background-color: transparent; /* Transparente para ver el fondo del body */
 }
 
@@ -796,6 +796,24 @@ body {
     align-items: center;
     perspective: 1000px;
     overflow: visible;
+    
+    /* Anillo de radar y resplandor cibernético hacker */
+    border: 2px solid rgba(34, 197, 94, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.12), inset 0 0 30px rgba(34, 197, 94, 0.04);
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.04) 0%, transparent 70%);
+    animation: tech-sphere-pulse 4s infinite alternate ease-in-out;
+}
+
+@keyframes tech-sphere-pulse {
+    0% {
+        border-color: rgba(34, 197, 94, 0.15);
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.08), inset 0 0 20px rgba(34, 197, 94, 0.03);
+    }
+    100% {
+        border-color: rgba(34, 197, 94, 0.35);
+        box-shadow: 0 0 35px rgba(34, 197, 94, 0.25), inset 0 0 35px rgba(34, 197, 94, 0.08);
+    }
 }
 
 .tech-sphere-glow {
