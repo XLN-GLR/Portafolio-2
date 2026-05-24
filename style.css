@@ -82,10 +82,11 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -2; /* Detrás del fondo del body */
+    z-index: -1; /* Posicionado sobre el fondo negro del body, pero debajo de los textos y tarjetas */
     pointer-events: none; /* No interactúa con clics de mouse */
-    opacity: 0.32; /* Incrementada para excelente visibilidad hacker sin comprometer legibilidad */
-    background-color: transparent; /* Transparente para ver el fondo del body */
+    opacity: 0.35; /* Opacidad óptima para gran visibilidad hacker cibernética */
+    background-color: transparent; /* Transparente para ver el fondo negro del body */
+    filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.4)); /* Glow neón hacker en las letras del canvas */
 }
 
 /* 3. ANIMACIÓN DE ENTRADA (SPLASH SCREEN / SERPIENTE NEÓN VERDE) */
