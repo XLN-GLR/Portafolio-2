@@ -75,9 +75,17 @@ body {
     border: 2px solid var(--bg-pure-black);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--neon-green-light);
-    box-shadow: var(--glow-green);
+/* Canvas de Lluvia Digital Matrix Hacker Global */
+.matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Totalmente por detrás de todo */
+    pointer-events: none; /* No interactúa con clics de mouse */
+    opacity: 0.15; /* Sutil y elegante, no interfiere con la lectura */
+    background-color: #000000;
 }
 
 /* 3. ANIMACIÓN DE ENTRADA (SPLASH SCREEN / SERPIENTE NEÓN VERDE) */
