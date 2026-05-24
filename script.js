@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     
     // Retardo para que la animación de carga se visualice completamente
-    const loaderDisplayTime = 3200; // 3.2 segundos
+    const loaderDisplayTime = 2000; // 2 segundos
 
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -158,10 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') {
                 const command = terminalInput.value.trim().toLowerCase();
                 
-                // Eco del comando ejecutado en la terminal
+                // Eco del comando ejecutado en la terminal (usando nodo_hacker)
                 const inputLine = document.createElement('div');
                 inputLine.className = 'terminal-line';
-                inputLine.innerHTML = `<span class="terminal-prompt">max_giler@hacker_node:~$</span> ${terminalInput.value}`;
+                inputLine.innerHTML = `<span class="terminal-prompt">max_giler@nodo_hacker:~$</span> ${terminalInput.value}`;
                 terminalOutput.appendChild(inputLine);
                 
                 // Procesamiento y salida del comando
@@ -170,18 +170,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 switch(command) {
                     case 'help':
+                    case 'ayuda':
                         outputLine.innerHTML = `Comandos disponibles en el sistema:
-  <span class="term-accent">about</span>    - Información del perfil de Maximiliano Giler.
-  <span class="term-accent">skills</span>   - Inspeccionar arsenal técnico y certificaciones.
-  <span class="term-accent">projects</span> - Listar repositorios y desarrollos destacados.
-  <span class="term-accent">clear</span>    - Limpiar la pantalla de la terminal.`;
+  <span class="term-accent">ayuda</span>       - Mostrar esta lista de comandos.
+  <span class="term-accent">sobremi</span>     - Información del perfil de Maximiliano Giler.
+  <span class="term-accent">habilidades</span> - Inspeccionar arsenal técnico y certificaciones.
+  <span class="term-accent">proyectos</span>   - Listar repositorios y desarrollos destacados.
+  <span class="term-accent">limpiar</span>     - Limpiar la pantalla de la terminal.`;
                         break;
                     case 'about':
-                        outputLine.innerHTML = `<span class="code-keyword">User:</span> Maximiliano Giler
-<span class="code-keyword">Role:</span> Backend Developer & Tech Infrastructure Specialist.
+                    case 'sobremi':
+                        outputLine.innerHTML = `<span class="code-keyword">Usuario:</span> Maximiliano Giler
+<span class="code-keyword">Rol:</span> Desarrollador Backend & Especialista en Infraestructura Tecnológica.
 Estudiante de Informática en Montepiedra. Mi enfoque es "Tecnología con estrategia: soluciones que generan valor". Optimizo plataformas de bases de datos y nubes para que sean altamente escalables, resilientes y eficientes.`;
                         break;
                     case 'skills':
+                    case 'habilidades':
                         outputLine.innerHTML = `Cargando arsenal_tecnico.yaml...
   <span class="code-class">[Automatización]</span> Cursor, Antigravity AI, Agentes de Ventas.
   <span class="code-class">[Desarrollo]</span> Python, Java, PHP, HTML5, CSS3, JS, React (Android APK).
@@ -190,12 +194,14 @@ Estudiante de Informática en Montepiedra. Mi enfoque es "Tecnología con estrat
   <span class="code-class">[Educación]</span> Bachiller Técnico Informático (MTP), Redes IP Cert.`;
                         break;
                     case 'projects':
+                    case 'proyectos':
                         outputLine.innerHTML = `Consultando base_proyectos.json...
   1. <span class="term-accent">Organizador Gamificado</span> (Habit Tracker Web App - React)
-  2. <span class="term-accent">App Learning English</span> ( Didáctica didáctica infantil - React Native)
+  2. <span class="term-accent">App Learning English</span> (Didáctica infantil - React Native)
   3. <span class="term-accent">Gestión de Riesgos MTP</span> (Mitigación estructural de desastres - Python/MySQL)`;
                         break;
                     case 'clear':
+                    case 'limpiar':
                         terminalOutput.innerHTML = '';
                         terminalInput.value = '';
                         return;
@@ -204,7 +210,7 @@ Estudiante de Informática en Montepiedra. Mi enfoque es "Tecnología con estrat
                         terminalInput.value = '';
                         return;
                     default:
-                        outputLine.innerHTML = `bash: comando no encontrado: <span class="text-danger" style="color: #ef4444;">${command}</span>. Escribe <span class="term-accent">help</span> para ver los comandos válidos.`;
+                        outputLine.innerHTML = `bash: comando no encontrado: <span class="text-danger" style="color: #ef4444;">${command}</span>. Escribe <span class="term-accent">ayuda</span> para ver los comandos válidos.`;
                 }
 
                 terminalOutput.appendChild(outputLine);

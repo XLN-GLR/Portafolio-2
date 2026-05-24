@@ -24,9 +24,9 @@
     --text-primary: #ffffff;
     --text-secondary: #e2e8f0;
     --text-muted: #64748b;
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'Orbitron', monospace; /* Para títulos hacker y terminal */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'JetBrains Mono', monospace;
+    --font-mono: 'Share Tech Mono', monospace;
     
     /* Resplandores y Glow */
     --glow-green: 0 0 15px rgba(34, 197, 94, 0.45);
@@ -52,6 +52,11 @@ body {
     font-family: var(--font-body);
     color: var(--text-secondary);
     background-color: var(--bg-dark-deep);
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+        linear-gradient(rgba(34, 197, 94, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 197, 94, 0.015) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
     overflow-x: hidden;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -103,8 +108,8 @@ body {
 
 .loader-container {
     position: relative;
-    width: 310px;
-    height: 310px;
+    width: 350px;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,10 +151,10 @@ body {
 
 @keyframes snake-wave {
     0%, 100% {
-        r: 107px;
+        r: 127px;
     }
     50% {
-        r: 113px;
+        r: 133px;
     }
 }
 
@@ -391,33 +396,60 @@ body {
 #main-header.scrolled .nav-container {
     height: 60px;
 }
-
-/* Logo */
+/* Logo G 3D */
 .logo {
-    font-family: var(--font-mono);
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: var(--text-primary);
-    text-decoration: none;
-    letter-spacing: 0.1em;
     display: flex;
     align-items: center;
-    text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+    text-decoration: none;
 }
 
-.logo-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--neon-green);
-    border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: var(--glow-green);
+.nav-logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.45));
+    transition: var(--transition-smooth);
 }
 
-.logo .highlight {
-    color: var(--neon-green);
+.nav-logo-img:hover {
+    filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.85));
+    transform: scale(1.05);
 }
 
+.footer-logo-img {
+    height: 38px;
+    width: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.35));
+    margin-bottom: 12px;
+    transition: var(--transition-smooth);
+}
+
+.footer-logo-img:hover {
+    filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.75));
+}
+
+/* Hero G 3D Logo */
+.hero-logo-box {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hero-logo-3d {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.6));
+    animation: spin3D 12s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes spin3D {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
 /* Menú */
 .nav-menu ul {
     display: flex;
@@ -971,10 +1003,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* Bento Grid Spans para estructurar en Bento */
-.skills-grid-bento .bento-card:nth-child(2) {
-    grid-column: span 2;
-}
+
 
 .bento-icon-box {
     width: 48px;
@@ -1219,6 +1248,13 @@ body {
 }
 
 /* 11. SECCIÓN PROYECTOS (TECH CARDS) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
 .project-card {
     background: var(--bg-glass);
     border: 1px solid var(--border-glass);
@@ -1659,12 +1695,13 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .skills-grid-bento .bento-card:nth-child(2) {
-        grid-column: span 2;
-    }
-    
     .certifications-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .contact-grid {
@@ -1740,12 +1777,13 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .skills-grid-bento .bento-card:nth-child(2) {
-        grid-column: span 1;
-    }
-    
     .certifications-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .form-row {
