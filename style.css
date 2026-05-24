@@ -430,12 +430,17 @@ body {
 }
 
 /* Hero G 3D Logo (Pure HTML/CSS Multicapa - Recreado de Portafolio Antiguo) */
+.perspective-1000 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
 .hero-logo-box {
     margin-top: 15px;
     margin-bottom: 25px;
     display: flex;
     justify-content: flex-start;
-    height: 130px; /* Suficiente espacio para la extrusión */
+    height: 140px; /* Suficiente espacio para la extrusión y visualización */
     align-items: center;
 }
 
@@ -445,7 +450,8 @@ body {
     height: 120px;
     transform-style: preserve-3d;
     transform: rotateX(15deg) rotateY(-25deg);
-    animation: rotate3d-custom 12s infinite linear;
+    /* Animación de oscilación tridimensional suave idéntica al portafolio antiguo */
+    animation: rotate3d-original 6s infinite alternate ease-in-out;
     pointer-events: none; /* No hover effects */
 }
 
@@ -455,7 +461,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    font-size: 9rem; /* Tamaño proporcional e impactante */
+    font-size: 8.5rem; /* Tamaño proporcional perfectamente adaptado al Hero */
     line-height: 1;
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
@@ -463,32 +469,38 @@ body {
     align-items: center;
     justify-content: center;
     transform: translate3d(0, 0, var(--z)); /* GPU forzada para 3D real estable */
-    will-change: transform; /* Optimización del navegador */
+    will-change: transform; /* Optimización de hardware en la GPU */
     transform-style: preserve-3d;
-    backface-visibility: hidden;
+    /* Eliminamos backface-visibility para prevenir bugs de Chrome que ocultan el texto */
 }
 
-/* Cara frontal impecable, verde elegante original, sin brillos excesivos */
+/* Cara frontal impecable, verde brillante del portafolio antiguo */
 .g-3d-layer.face {
     color: #4ade80;
-    -webkit-text-stroke: 1px #22c55e;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -webkit-text-stroke: 1.2px #22c55e;
+    text-shadow: 0 0 10px rgba(34, 197, 94, 0.4); /* Resplandor frontal suave e integrado */
     z-index: 10;
 }
 
-/* Extrusión del cuerpo lateral (fusión lateral perfecta de color original) */
+/* Extrusión del cuerpo lateral (fusión lateral en verde oscuro original) */
 .g-3d-layer.depth {
-    color: #064e3b; /* Verde oscuro original del cuerpo */
-    -webkit-text-stroke: 3px #064e3b; /* Trazo grueso para fusionar en una pared suave */
+    color: #064e3b; /* Verde oscuro original del cuerpo del portafolio antiguo */
+    -webkit-text-stroke: 3.5px #064e3b; /* Trazo grueso del mismo color para fusión lateral impecable */
 }
 
-/* Sombra posterior física opaca sin brillos neón */
+/* Sombra posterior física opaca limpia */
 .g-3d-layer.shadow {
     color: transparent;
     -webkit-text-stroke: 0;
-    text-shadow: 0 10px 22px rgba(0, 0, 0, 0.9);
-    filter: blur(5px);
+    text-shadow: 0 10px 22px rgba(0, 0, 0, 0.95);
+    filter: blur(6px);
     opacity: 0.95;
+}
+
+/* Animación de oscilación de vaivén tridimensional original de la G */
+@keyframes rotate3d-original {
+    0% { transform: rotateX(10deg) rotateY(-30deg); }
+    100% { transform: rotateX(-10deg) rotateY(30deg); }
 }
 
 @keyframes rotate3d-custom {
