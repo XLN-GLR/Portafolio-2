@@ -1,0 +1,8 @@
+# Omitir archivos temporales y de configuración
+assets_old_portfolio.html
+.gemini/
+.vs/
+.vscode/
+node_modules/
+Thumbs.db
+.DS_Store

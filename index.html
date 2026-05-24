@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximiliano Giler | Desarrollador & Specialist in Tech Infrastructure</title>
+    <meta name="description" content="Portafolio profesional de Maximiliano Giler, desarrollador backend, consultor técnico y especialista en infraestructuras digitales. Soluciones eficientes y seguras.">
+    
+    <!-- Google Fonts: Orbitron (hacker/tech), Space Grotesk (futurista) e Inter (textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para iconografía hacker y redes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Devicon para iconos de tecnologías de programación vectoriales -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Hojas de estilos del proyecto -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======================================================== -->
+    <!-- 1. ANIMACIÓN DE ENTRADA (SPLASH SCREEN / SERPIENTE VERDE) -->
+    <!-- ======================================================== -->
+    <div id="loader-overlay" class="loader-overlay">
+        <div class="loader-container">
+            <!-- Serpiente neón de círculos concéntricos en tonalidades verdes hacker -->
+            <div class="loader-ring-wrapper">
+                <svg class="loader-svg" viewBox="0 0 300 300">
+                    <defs>
+                        <!-- Filtro de resplandor neón verde ultra-suave -->
+                        <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="4.5" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Grupo que rota en sentido antihorario. Cabeza en las 12 en punto -->
+                    <g class="comet-group" transform="rotate(-90 150 150)" filter="url(#neon-glow)">
+                        <!-- Segmentos concéntricos continuos (De cabeza gruesa y blanca a cola fina y verde oscura) -->
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#ffffff" stroke-width="25.0" stroke-dasharray="21 692" stroke-dashoffset="0" stroke-linecap="round" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#dcfce7" stroke-width="23.4" stroke-dasharray="21 692" stroke-dashoffset="-19.2" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#86efac" stroke-width="21.8" stroke-dasharray="21 692" stroke-dashoffset="-38.4" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#4ade80" stroke-width="20.2" stroke-dasharray="21 692" stroke-dashoffset="-57.6" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#22c55e" stroke-width="18.6" stroke-dasharray="21 692" stroke-dashoffset="-76.8" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#16a34a" stroke-width="17.0" stroke-dasharray="21 692" stroke-dashoffset="-96.0" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#15803d" stroke-width="15.4" stroke-dasharray="21 692" stroke-dashoffset="-115.2" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#166534" stroke-width="13.8" stroke-dasharray="21 692" stroke-dashoffset="-134.4" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#14532d" stroke-width="12.2" stroke-dasharray="21 692" stroke-dashoffset="-153.6" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#052e16" stroke-width="10.6" stroke-dasharray="21 692" stroke-dashoffset="-172.8" stroke-opacity="0.85" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#052e16" stroke-width="9.0" stroke-dasharray="21 692" stroke-dashoffset="-192.0" stroke-opacity="0.70" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#042310" stroke-width="7.4" stroke-dasharray="21 692" stroke-dashoffset="-211.2" stroke-opacity="0.55" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#031d0d" stroke-width="5.8" stroke-dasharray="21 692" stroke-dashoffset="-230.4" stroke-opacity="0.40" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#02170a" stroke-width="4.2" stroke-dasharray="21 692" stroke-dashoffset="-249.6" stroke-opacity="0.25" />
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#010d06" stroke-width="2.6" stroke-dasharray="21 692" stroke-dashoffset="-268.8" stroke-opacity="0.10" />
+                    </g>
+                </svg>
+            </div>
+            <!-- Texto estático Bienvenido en el centro (fuera de la rotación) -->
+            <div class="loader-text">Bienvenido</div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- 2. CONTENIDO PRINCIPAL DEL PORTAFOLIO (INICIALMENTE OCULTO) -->
+    <!-- ======================================================== -->
+    <div id="main-content" class="main-content">
+        
+        <!-- HEADER / NAVBAR (GLASSMORPHISM) -->
+        <header id="main-header">
+            <div class="nav-container">
+                <a href="#inicio" class="logo">
+                    <span class="logo-dot"></span>
+                    M<span class="highlight">GILER</span>
+                </a>
+                
+                <nav class="nav-menu" id="nav-menu">
+                    <ul>
+                        <li><a href="#inicio" class="nav-link active"><i class="fa-solid fa-terminal"></i> Inicio</a></li>
+                        <li><a href="#sobre-mi" class="nav-link"><i class="fa-solid fa-user-secret"></i> Sobre Mí</a></li>
+                        <li><a href="#skills" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Arsenal</a></li>
+                        <li><a href="#experiencia" class="nav-link"><i class="fa-solid fa-network-wired"></i> Experiencia</a></li>
+                        <li><a href="#proyectos" class="nav-link"><i class="fa-solid fa-code-branch"></i> Proyectos</a></li>
+                        <li><a href="#contacto" class="nav-link"><i class="fa-solid fa-envelope"></i> Conexión</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: INICIO (HERO SECTION CON TERMINAL HACKER INTERACTIVA) -->
+        <section id="inicio" class="hero">
+            <div class="hero-background-effects">
+                <div class="glow-orb orb-1"></div>
+                <div class="glow-orb orb-2"></div>
+            </div>
+            
+            <div class="section-container hero-container">
+                <div class="hero-info">
+                    <div class="badge neon-badge">
+                        <span class="badge-dot"></span> SYSTEM OPERATIONAL | m_giler_node
+                    </div>
+                    <h1 class="hero-title">
+                        Maximiliano <span class="gradient-text">Giler</span>
+                    </h1>
+                    <h3 class="hero-subtitle-role">
+                        &gt; Tech Consultant &amp; Research Engineer
+                    </h3>
+                    <p class="hero-description">
+                        Desarrollador backend y especialista en infraestructuras digitales. Estudiante de Informática en Montepiedra con experiencia en gestión de bases de datos y despliegue en la nube. Optimizo plataformas para que sean escalables, seguras y resilientes.
+                    </p>
+                    
+                    <!-- VENTANA DE TERMINAL ESTILO HACKER INTERACTIVA -->
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="term-btn term-close"></span>
+                                <span class="term-btn term-min"></span>
+                                <span class="term-btn term-max"></span>
+                            </div>
+                            <div class="terminal-title">bash - max_giler@hacker_node:~</div>
+                        </div>
+                        <div class="terminal-body" id="terminal-body">
+                            <div class="terminal-line"><span class="term-accent">$</span> init_session --user m_giler</div>
+                            <div class="terminal-line text-muted">Connecting to Montepiedra core nodes... OK</div>
+                            <div class="terminal-line text-muted">Loading backend infrastructure modules... OK</div>
+                            <div class="terminal-line text-muted">Database connection established (PostgreSQL)... OK</div>
+                            <div class="terminal-line text-highlight">System Operational. Escribe 'help' para ver los comandos del sistema.</div>
+                            <div class="terminal-output-area" id="terminal-output"></div>
+                            <div class="terminal-input-line">
+                                <span class="terminal-prompt">max_giler@hacker_node:~$</span>
+                                <input type="text" id="terminal-input" autofocus autocomplete="off" placeholder="escribe help, about, skills, projects, clear...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#proyectos" class="btn btn-primary">
+                            <span class="btn-text">Ver Proyectos</span>
+                            <span class="btn-icon"><i class="fa-solid fa-chevron-right"></i></span>
+                        </a>
+                        <a href="#contacto" class="btn btn-secondary">
+                            <span class="btn-text">Transmitir Carga / Contacto</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <!-- Esfera 3D interactiva de tecnologías en verdes y blancos -->
+                    <div class="tech-sphere-container" id="tech-sphere-container">
+                        <div class="tech-sphere-glow"></div>
+                        <div class="tech-sphere" id="tech-sphere">
+                            <!-- Inyección dinámica de Devicons -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-down-indicator">
+                <span class="scroll-mouse">
+                    <span class="scroll-wheel"></span>
+                </span>
+                <span class="scroll-text">Desliza para explorar terminal</span>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: SOBRE MÍ (ABOUT SECTION) -->
+        <section id="sobre-mi" class="about section-padding reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-subtitle">¿Quién soy?</span>
+                    <h2 class="section-title">Sobre <span class="gradient-text">Mí</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-details">
+                        <h3>Tecnología con Estrategia: Soluciones que Generan Valor</h3>
+                        <p>
+                            Soy un desarrollador enfocado en el backend y la arquitectura de sistemas. Considero que el código no solo debe resolver problemas algorítmicos, sino también alinearse con una infraestructura sólida para garantizar estabilidad y rendimiento.
+                        </p>
+                        <p>
+                            Actualmente me formo en Informática en la **Unidad Educativa Montepiedra**, donde he profundizado en bases de datos y despliegue en la nube, optimizando plataformas digitales para que sean seguras, robustas y de alto rendimiento.
+                        </p>
+                        
+                        <div class="personal-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Ubicación:</span>
+                                <span class="info-val">Guayaquil, Ecuador</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Enfoque:</span>
+                                <span class="info-val">Backend &amp; Infraestructura</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Educación:</span>
+                                <span class="info-val">U.E. Montepiedra</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Consola Estilo Código de "Sobre Mí" -->
+                    <div class="about-console-wrapper">
+                        <div class="code-editor-window">
+                            <div class="editor-header">
+                                <div class="editor-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="editor-filename"><i class="fa-solid fa-file-code"></i> developer_manifest.py</div>
+                            </div>
+                            <div class="editor-body">
+                                <pre><code><span class="code-comment"># Maximiliano Giler - Developer Manifesto</span>
+<span class="code-keyword">class</span> <span class="code-class">Developer</span>:
+    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(self):
+        self.name = <span class="code-string">"Maximiliano Giler"</span>
+        self.role = <span class="code-string">"Backend & Infrastructure Developer"</span>
+        self.location = <span class="code-string">"Guayaquil, Ecuador"</span>
+        self.core_values = [<span class="code-string">"Scalability"</span>, <span class="code-string">"Resilience"</span>, <span class="code-string">"Value Generation"</span>]
+        
+    <span class="code-keyword">def</span> <span class="code-func">philosophy</span>(self):
+        <span class="code-keyword">return</span> <span class="code-string">"Technology with strategy: solutions that generate real value."</span>
+
+<span class="code-comment"># Initializing backend engine</span>
+m_giler = Developer()
+print(m_giler.philosophy())</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: ARSENAL TÉCNICO (SKILLS BENTO SECTION) -->
+        <section id="skills" class="skills section-padding reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Mis Capacidades</span>
+                    <h2 class="section-title">Arsenal <span class="gradient-text">Técnico</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="skills-grid-bento">
+                    
+                    <!-- Tarjeta 1: IA & Automatización -->
+                    <div class="bento-card">
+                        <div class="bento-icon-box">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3>IA &amp; Automatización</h3>
+                        <p>Optimización del desarrollo mediante herramientas cognitivas y agentes automáticos.</p>
+                        <div class="bento-skill-tags">
+                            <span>Cursor</span>
+                            <span>Antigravity AI</span>
+                            <span>Agentes de Ventas</span>
+                            <span>Automatización</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Full-Stack & Mobile -->
+                    <div class="bento-card">
+                        <div class="bento-icon-box">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>Full-Stack &amp; Mobile</h3>
+                        <p>Desarrollo lógico robusto y despliegue multiplataforma interactivo.</p>
+                        <div class="bento-skill-tags">
+                            <span>Python</span>
+                            <span>Java</span>
+                            <span>PHP</span>
+                            <span>HTML5 / CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Android APK (React/JS)</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Infraestructura & Redes -->
+                    <div class="bento-card">
+                        <div class="bento-icon-box">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3>Infraestructura &amp; Redes</h3>
+                        <p>Arquitectura, cableado, simulación y despliegue seguro en la nube.</p>
+                        <div class="bento-skill-tags">
+                            <span>Cisco Packet Tracer</span>
+                            <span>Redes IP</span>
+                            <span>CCTV</span>
+                            <span>AWS Cloud</span>
+                            <span>Seguridad</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Ingeniería & Soporte -->
+                    <div class="bento-card">
+                        <div class="bento-icon-box">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <h3>Ingeniería &amp; Soporte</h3>
+                        <p>Mantenimiento de sistemas físicos, bases de datos y diseño UI.</p>
+                        <div class="bento-skill-tags">
+                            <span>Mantenimiento Hardware</span>
+                            <span>SQL (MySQL/Postgre)</span>
+                            <span>Figma UI/UX</span>
+                            <span>Gestión DB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBSECCIÓN: EDUCACIÓN & CERTIFICACIONES -->
+                <div class="certifications-section mt-16">
+                    <h3 class="subsection-title">Certificaciones &amp; Educación</h3>
+                    <div class="certifications-grid">
+                        <div class="cert-card">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <h4>Bachiller Técnico en Informática</h4>
+                            <p>Unidad Educativa Montepiedra</p>
+                        </div>
+                        <div class="cert-card">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                            <h4>Redes IP</h4>
+                            <p>Capacítate para el Empleo</p>
+                        </div>
+                        <div class="cert-card">
+                            <i class="fa-solid fa-microchip"></i>
+                            <h4>Electrónica</h4>
+                            <p>Capacítate para el Empleo</p>
+                        </div>
+                        <div class="cert-card">
+                            <i class="fa-solid fa-desktop"></i>
+                            <h4>Ofimática</h4>
+                            <p>Capacítate para el Empleo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: EXPERIENCIA PROFESIONAL -->
+        <section id="experiencia" class="experience section-padding reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Trayectoria</span>
+                    <h2 class="section-title">Experiencia <span class="gradient-text">Profesional</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header-info">
+                                <div>
+                                    <h3>Soporte Técnico &amp; Redes (FCT)</h3>
+                                    <h4 class="timeline-company">Terminal de Cargas del Ecuador (TCE)</h4>
+                                </div>
+                                <span class="timeline-badge">Prácticas Profesionales</span>
+                            </div>
+                            <ul class="timeline-tasks">
+                                <li>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    <span>Ejecución de mantenimiento preventivo y correctivo en los sistemas informáticos del departamento de Recursos Humanos (RRHH).</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    <span>Configuración, estructuración y optimización de redes de impresión en el área de bodega, garantizando una operatividad fluida y continua.</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    <span>Auditoría exhaustiva, inventario de hardware y control logístico de equipos informáticos de repuesto.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PROYECTOS -->
+        <section id="proyectos" class="projects section-padding reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Mis Trabajos</span>
+                    <h2 class="section-title">Proyectos <span class="gradient-text">Destacados</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="projects-grid">
+                    
+                    <!-- Proyecto 1: Organizador Gamificado -->
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <div class="project-overlay-gradient"></div>
+                            <div class="project-icon-placeholder">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div class="project-tag">HTML / JS / React</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-card-title">Organizador Gamificado</h3>
+                            <p class="project-card-description">Una aplicación web interactiva diseñada para la gestión de hábitos y tareas diarias utilizando mecánicas y recompensas de gamificación para mejorar la productividad.</p>
+                            <div class="project-tech-stack">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>React</span>
+                            </div>
+                            <a href="#" class="project-link" onclick="event.preventDefault(); alert('Organizador Gamificado: Diseñado para incentivar la constancia en el estudio.');">
+                                Inspeccionar Código <i class="fa-solid fa-terminal"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2: App Learning English -->
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <div class="project-overlay-gradient"></div>
+                            <div class="project-icon-placeholder">
+                                <i class="fa-solid fa-language"></i>
+                            </div>
+                            <div class="project-tag">JS / React</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-card-title">App Learning English</h3>
+                            <p class="project-card-description">Aplicativo móvil y didáctico diseñado específicamente para niños de básica, basado en estándares educativos modernos de gamificación para la enseñanza de inglés.</p>
+                            <div class="project-tech-stack">
+                                <span>JavaScript</span>
+                                <span>React</span>
+                                <span>Android APK</span>
+                                <span>UI Design</span>
+                            </div>
+                            <a href="#" class="project-link" onclick="event.preventDefault(); alert('App Learning English: Didáctica interactiva para dispositivos táctiles.');">
+                                Inspeccionar Código <i class="fa-solid fa-terminal"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3: Gestión de Riesgos MTP -->
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <div class="project-overlay-gradient"></div>
+                            <div class="project-icon-placeholder">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div class="project-tag">Python / Data</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-card-title">Gestión de Riesgos MTP</h3>
+                            <p class="project-card-description">Sistema de información institucional diseñado para la prevención, monitoreo estadístico y mitigación de desastres y riesgos estructurales en infraestructuras.</p>
+                            <div class="project-tech-stack">
+                                <span>Python</span>
+                                <span>Data Analysis</span>
+                                <span>MySQL</span>
+                                <span>Security Management</span>
+                            </div>
+                            <a href="#" class="project-link" onclick="event.preventDefault(); alert('Gestión de Riesgos MTP: Algoritmos preventivos y visualización de datos.');">
+                                Inspeccionar Código <i class="fa-solid fa-terminal"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: CONTACTO / CONEXIÓN DE DATOS -->
+        <section id="contacto" class="contact section-padding reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Establecer Canal</span>
+                    <h2 class="section-title">Iniciar <span class="gradient-text">Conexión</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <p class="contact-lead-text">Selecciona un canal de comunicación directo o envía tu carga útil de datos mediante el terminal.</p>
+                
+                <div class="contact-grid">
+                    
+                    <!-- Canales Directos Hacker -->
+                    <div class="contact-info-cards">
+                        <a href="https://github.com/XLN-GLR" target="_blank" rel="noopener noreferrer" class="contact-card-item-link">
+                            <div class="contact-card-item">
+                                <div class="contact-icon-box">
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                                <div class="contact-text-box">
+                                    <h4>GitHub / Repositorios</h4>
+                                    <p>github.com/XLN-GLR</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/593967084720" target="_blank" rel="noopener noreferrer" class="contact-card-item-link">
+                            <div class="contact-card-item">
+                                <div class="contact-icon-box">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-text-box">
+                                    <h4>WhatsApp / Respuesta Rápida</h4>
+                                    <p>+593 96 708 4720</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:xileracn@gmail.com" class="contact-card-item-link">
+                            <div class="contact-card-item">
+                                <div class="contact-icon-box">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="contact-text-box">
+                                    <h4>Correo / Conexión Nodo</h4>
+                                    <p>xileracn@gmail.com</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Formulario Terminal -->
+                    <div class="contact-form-wrapper">
+                        <div class="form-terminal-decor">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="title">payload_transmission_form.sh</span>
+                        </div>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">&gt;_ IDENTIFICADOR / NOMBRE</label>
+                                    <input type="text" id="name" required placeholder="Ej. sysadmin_01">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">&gt;_ NODO / EMAIL</label>
+                                    <input type="email" id="email" required placeholder="tu@nodo.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">&gt;_ ASUNTO DE CONEXIÓN</label>
+                                <input type="text" id="subject" required placeholder="Ej. Solicitud de desarrollo backend">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">&gt;_ MENSAJE / PAYLOAD</label>
+                                <textarea id="message" rows="5" required placeholder="Escribe los parámetros de tu solicitud aquí..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span class="btn-text">TRANSMITIR DATOS</span>
+                                <span class="btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER MINIMALISTA HACKER -->
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <span class="logo-dot"></span>
+                    M<span class="highlight">GILER</span>.core
+                    <p>System Operational. © <span id="year"></span> Maximiliano Giler.</p>
+                </div>
+                
+                <div class="footer-socials">
+                    <a href="https://github.com/XLN-GLR" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/593967084720" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:xileracn@gmail.com" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>Todos los derechos reservados. System Operational</p>
+                    <p class="footer-by">Optimizado para velocidad, seguridad y escalabilidad.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts de la aplicación -->
+    <script src="script.js"></script>
+</body>
+</html>
