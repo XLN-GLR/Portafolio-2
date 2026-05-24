@@ -82,10 +82,10 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Totalmente por detrás de todo */
+    z-index: -2; /* Detrás del fondo del body */
     pointer-events: none; /* No interactúa con clics de mouse */
     opacity: 0.15; /* Sutil y elegante, no interfiere con la lectura */
-    background-color: #000000;
+    background-color: transparent; /* Transparente para ver el fondo del body */
 }
 
 /* 3. ANIMACIÓN DE ENTRADA (SPLASH SCREEN / SERPIENTE NEÓN VERDE) */
@@ -585,7 +585,7 @@ body {
     padding-top: 120px;
     padding-bottom: 120px; /* Suficiente espacio abajo para evitar solapamientos visuales */
     overflow: clip; /* Permite ver el contenido pero protege el renderizado 3D de cortes */
-    background-color: var(--bg-dark-deep);
+    background-color: transparent; /* Fondo transparente para ver la lluvia digital */
 }
 
 .hero-background-effects {
@@ -607,19 +607,11 @@ body {
 }
 
 .orb-1 {
-    top: -10%;
-    right: 5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, var(--neon-green) 0%, transparent 80%);
+    display: none; /* Eliminamos el brillo verde extra de la derecha */
 }
 
 .orb-2 {
-    bottom: -15%;
-    left: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--neon-green-dark) 0%, transparent 80%);
+    display: none; /* Eliminamos el brillo verde de la izquierda para un fondo negro uniforme */
 }
 
 .hero-container {
@@ -807,14 +799,7 @@ body {
 }
 
 .tech-sphere-glow {
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, transparent 70%);
-    filter: blur(25px);
-    z-index: 1;
-    pointer-events: none;
+    display: none; /* Eliminamos el brillo verde detrás de la esfera */
 }
 
 .tech-sphere {
@@ -926,7 +911,7 @@ body {
 
 /* 8. SECCIÓN SOBRE MÍ */
 .about {
-    background-color: var(--bg-dark-secondary);
+    background-color: transparent; /* Fondo transparente para ver la lluvia digital */
     border-top: 1px solid rgba(255, 255, 255, 0.02);
     border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
@@ -1200,7 +1185,7 @@ body {
 
 /* 10. TIMELINE EXPERIENCIA PROFESIONAL */
 .experience {
-    background-color: var(--bg-dark-deep);
+    background-color: transparent; /* Fondo transparente para ver la lluvia digital */
 }
 
 .timeline-container {
@@ -1470,7 +1455,7 @@ body {
 
 /* 12. SECCIÓN DE CONTACTO HACKER */
 .contact {
-    background-color: var(--bg-dark-secondary);
+    background-color: transparent; /* Fondo transparente para ver la lluvia digital */
     border-top: 1px solid rgba(255, 255, 255, 0.02);
 }
 
@@ -1651,7 +1636,7 @@ body {
 
 /* 13. FOOTER HACKER CORE */
 .main-footer {
-    background-color: var(--bg-pure-black);
+    background-color: transparent; /* Fondo transparente para ver la lluvia digital */
     border-top: 1px solid rgba(255, 255, 255, 0.02);
     padding: 60px 0 40px 0;
 }
