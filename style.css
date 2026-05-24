@@ -25,8 +25,9 @@
     --text-secondary: #e2e8f0;
     --text-muted: #64748b;
     --font-heading: 'Orbitron', sans-serif;
-    --font-body: 'JetBrains Mono', monospace;
+    --font-body: 'Inter', sans-serif;
     --font-mono: 'Share Tech Mono', monospace;
+    --font-code: 'JetBrains Mono', monospace;
     
     /* Resplandores y Glow */
     --glow-green: 0 0 15px rgba(34, 197, 94, 0.45);
@@ -429,26 +430,68 @@ body {
     filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.75));
 }
 
-/* Hero G 3D Logo */
+/* Hero G 3D Logo (Pure HTML/CSS Multicapa) */
 .hero-logo-box {
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: flex-start;
+    height: 120px; /* Suficiente espacio para la extrusión */
+    align-items: center;
 }
 
-.hero-logo-3d {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.6));
-    animation: spin3D 12s linear infinite;
-    pointer-events: none;
+.g-3d-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg) rotateY(-25deg);
+    animation: rotate3d-custom 12s infinite linear;
+    pointer-events: none; /* No hover effects */
 }
 
-@keyframes spin3D {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(360deg); }
+.g-3d-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 8rem; /* Tamaño proporcional en base a Orbitron */
+    line-height: 1;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(var(--z));
+}
+
+/* Cara frontal brillante */
+.g-3d-layer.face {
+    color: #4ade80;
+    text-shadow: 0 0 15px rgba(34, 197, 94, 0.85);
+    z-index: 10;
+    -webkit-text-stroke: 1px #86efac;
+}
+
+/* Extrusión del cuerpo (profundidad) */
+.g-3d-layer.depth {
+    color: #064e3b;
+    -webkit-text-stroke: 2px #14532d;
+}
+
+/* Sombra posterior */
+.g-3d-layer.shadow {
+    color: transparent;
+    -webkit-text-stroke: 0;
+    text-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+    filter: blur(6px);
+    opacity: 0.8;
+}
+
+@keyframes rotate3d-custom {
+    0% { transform: rotateX(15deg) rotateY(0deg); }
+    100% { transform: rotateX(15deg) rotateY(360deg); }
 }
 /* Menú */
 .nav-menu ul {
@@ -656,7 +699,7 @@ body {
 
 .terminal-body {
     padding: 16px;
-    font-family: 'Space Grotesk', monospace;
+    font-family: var(--font-code);
     font-size: 0.85rem;
     line-height: 1.5;
     color: #e2e8f0;
@@ -963,7 +1006,7 @@ body {
 
 .editor-body {
     padding: 20px;
-    font-family: 'Space Grotesk', monospace;
+    font-family: var(--font-code);
     font-size: 0.8rem;
     line-height: 1.6;
     color: #94a3b8;
